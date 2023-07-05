@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
-//const list = require("./scrape");
+const list = require("./scrape");
 const date = require("./date");
 const notifica = require("./notifica");
 
@@ -13,7 +13,7 @@ const token = '6256098596:AAGFVjYC96Cpt_uAVbC6cyQBe2zkMA_Vaok';
 const bot = new TelegramBot(token, { polling: true });
 const allowedChatIds = [1447860208]; // Sostituisci con gli ID delle chat consentite
 //MESSAGE
-bot.on('message', (msg) => {
+bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
   //CONTROLLO ID
   if (!allowedChatIds.includes(chatId)) {
@@ -22,25 +22,24 @@ bot.on('message', (msg) => {
   }
   else{
     //INIZIO COMUNICAZIONE
-    bot.sendMessage(chatId, "diegospillo ti consiglia...");
+    await bot.sendMessage(chatId, "diegospillo ti consiglia...");
     const messageText = msg.text;
-    //const res = await response(messageText);
-    const res = {
+    const res = await response(messageText);
+    /*const res = {
       jsn:"offline",
       stato:false
     }
-    
-    bot.sendMessage(chatId, res.jsn);
+    */
+    await bot.sendMessage(chatId, res.jsn);
 
     notifica(msg.from.first_name,msg.from.username,messageText,res.stato,date(msg.date),chatId);
-    bot.sendMessage(chatId, "Cerca altre parole per vincere contro chiunque 😁");
+    await bot.sendMessage(chatId, "Cerca altre parole per vincere contro chiunque 😁");
   }
-  return;
 });
 
 //RESPONSE FROM PUPPETTER
-/*async function response(istr) {
+async function response(istr) {
       istr = istr.replace(/ /g, "-");
       const val = await list(istr);
       return val;
-}*/
+}
