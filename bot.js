@@ -11,7 +11,7 @@ git push origin main
 
 const token = process.env.TOKEN;
 const bot = new TelegramBot(token, { polling: true });
-const allowedChatIds = [1447860208]; // Sostituisci con gli ID delle chat consentite
+const allowedChatIds = [4845540840450]; // Sostituisci con gli ID delle chat consentite
 //MESSAGE
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
