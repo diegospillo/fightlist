@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
-const list = require("./scrape");
+//const list = require("./scrape");
 const date = require("./date");
 const notifica = require("./notifica");
 
@@ -38,8 +38,8 @@ bot.on('message', async (msg) => {
 });
 
 //RESPONSE FROM PUPPETTER
-async function response(istr) {
+/*async function response(istr) {
       istr = istr.replace(/ /g, "-");
       const val = await list(istr);
       return val;
-}
+}*/
