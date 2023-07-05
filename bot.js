@@ -35,6 +35,7 @@ bot.on('message', async (msg) => {
     notifica(msg.from.first_name,msg.from.username,messageText,res.stato,date(msg.date),chatId);
     await bot.sendMessage(chatId, "Cerca altre parole per vincere contro chiunque 😁");
   }
+  return;
 });
 
 //RESPONSE FROM PUPPETTER
