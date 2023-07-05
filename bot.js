@@ -19,6 +19,7 @@ bot.on('message', async (msg) => {
   if (!allowedChatIds.includes(chatId)) {
     bot.sendMessage(chatId, 'Mi spiace, non hai accesso a questo bot.');
     notifica(msg.from.first_name,msg.from.username,msg.text,"rejected",date(msg.date),chatId);
+    return;
   }
   else{
     //INIZIO COMUNICAZIONE
@@ -34,6 +35,7 @@ bot.on('message', async (msg) => {
 
     notifica(msg.from.first_name,msg.from.username,messageText,res.stato,date(msg.date),chatId);
     await bot.sendMessage(chatId, "Cerca altre parole per vincere contro chiunque 😁");
+    return;
   }
 });
 
