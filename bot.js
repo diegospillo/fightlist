@@ -13,7 +13,7 @@ const token = '6256098596:AAGFVjYC96Cpt_uAVbC6cyQBe2zkMA_Vaok';
 const bot = new TelegramBot(token, { polling: true });
 const allowedChatIds = [1447860208]; // Sostituisci con gli ID delle chat consentite
 //MESSAGE
-bot.on('message', async (msg) => {
+bot.on('message', (msg) => {
     const chatId = msg.chat.id;
   //CONTROLLO ID
   if (!allowedChatIds.includes(chatId)) {
@@ -22,7 +22,7 @@ bot.on('message', async (msg) => {
   }
   else{
     //INIZIO COMUNICAZIONE
-    await bot.sendMessage(chatId, "diegospillo ti consiglia...");
+    bot.sendMessage(chatId, "diegospillo ti consiglia...");
     const messageText = msg.text;
     //const res = await response(messageText);
     const res = {
@@ -30,10 +30,10 @@ bot.on('message', async (msg) => {
       stato:false
     }
     
-    await bot.sendMessage(chatId, res.jsn);
+    bot.sendMessage(chatId, res.jsn);
 
     notifica(msg.from.first_name,msg.from.username,messageText,res.stato,date(msg.date),chatId);
-    await bot.sendMessage(chatId, "Cerca altre parole per vincere contro chiunque 😁");
+    bot.sendMessage(chatId, "Cerca altre parole per vincere contro chiunque 😁");
   }
   return;
 });
