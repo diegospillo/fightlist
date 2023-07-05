@@ -38,7 +38,10 @@ async function start(word){
 
   if(data.length==0){
     await browser.close();
-    return "Nessun Risultato";
+    return {
+      jsn:"Nessun Risultato 😞",
+      stato:false
+    };
   }
 
   var list = new Array;
@@ -58,7 +61,10 @@ async function start(word){
   }).join("\n");
   
   await browser.close();
-  return lista;
+  return {
+    jsn:lista,
+    stato:true
+  };
 };
 
 module.exports = start;
