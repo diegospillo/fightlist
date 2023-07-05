@@ -9,7 +9,7 @@ git commit -m "First Commit"
 git push origin main
 */
 
-const token = process.env.TOKEN||'6256098596:AAGFVjYC96Cpt_uAVbC6cyQBe2zkMA_Vaok';
+const token = '6256098596:AAGFVjYC96Cpt_uAVbC6cyQBe2zkMA_Vaok';
 const bot = new TelegramBot(token, { polling: true });
 const allowedChatIds = [1447860208]; // Sostituisci con gli ID delle chat consentite
 //MESSAGE
